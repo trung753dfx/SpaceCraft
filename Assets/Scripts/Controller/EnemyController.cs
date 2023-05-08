@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyController : PlaneController
 {
-    public int time = 0;
     int ShootDelay = 200;
     float timer;
     private void Update()
     {
         timer += Time.deltaTime;
+
         if (timer >= ShootDelay)
         {
             timer = 0;
@@ -27,7 +27,7 @@ public class EnemyController : PlaneController
         if (collision.transform.gameObject.CompareTag("me"))
         {
             Destroy(this.gameObject);
-            gameManager.Instance.genPlaneEnemy();
+            gameManager.Instance.addScore();
         }
     }
 }

@@ -18,10 +18,26 @@ public class MeController : PlaneController
         if (timer >= ShootDelay)
         {
             timer = 0;
-            Shoot();
+            if(gameManager.Instance.scorePlayer <= 100)
+            {
+                Shoot();
+            }
+            else
+            {
+                ShootUpgrade();
+            }
         }
         timer++;
     }
+    public void SecondTranshoot()
+    {
+        if (gameManager.Instance.scorePlayer >= 10)
+        {
+            Instantiate(transhoot, gameManager.Instance.transform.position, gameManager.Instance.transform.rotation);
+        }
+    }
 }
+
+
 
 public class Player : SingletonMonoBehaviour<MeController> { }
